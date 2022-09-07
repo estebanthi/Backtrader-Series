@@ -1,0 +1,4 @@
+backtrader2==1.9.76.123
+backtrader==1.9.76.123
+termcolor==1.1.0
+yfinance==0.1.74
