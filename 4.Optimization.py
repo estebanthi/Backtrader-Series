@@ -2,7 +2,7 @@ import backtrader as bt
 import backtrader.feeds as btfeeds
 import yfinance as yf
 
-from strategy import MyStrategy
+from strategies import MyStrategy
 from utils import get_params_from_strategy_result
 
 

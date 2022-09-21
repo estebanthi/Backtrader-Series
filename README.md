@@ -9,3 +9,5 @@
 3. [Analysis of the Results](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-analysis-of-the-results-467a82b26ef5)
 
 4. [Optimization](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-optimization-c5d8d0ed389e)
+
+5. [Custom Indicators](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-custom-indicators-adba75426ee2)
