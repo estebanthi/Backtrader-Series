@@ -107,3 +107,23 @@ class CustomIndicatorStrat(bt.Strategy):
         if trade.isclosed:
             self.log(colored('PROFIT, %.2f' % (trade.pnl), 'green') if trade.pnl > 0
                      else colored('LOSS, %.2f' % (trade.pnl), 'red'))
+
+
+class MultiTimeframeStrategy(bt.Strategy):
+
+    params = (
+        ('ema_period', 10),
+    )
+
+    def __init__(self):
+        self.ema_d1_close = EMA(self.datas[0].close, period=self.p.ema_period)
+        self.ema_d1_high = EMA(self.datas[0].high, period=self.p.ema_period)
+        self.ema_w1_close = EMA(self.datas[1].close, period=self.p.ema_period)
+        self.eth_ema = EMA(self.datas[1].close, period=self.p.ema_period)
+    def log(self, msg, dt=None):
+        print("{} - {}".format(dt or self.datas[0].datetime.date(0), msg))
+
+    def next(self):
+        self.log("BTC Close: {}, EMA D1 Close: {}, EMA D1 High: {}, EMA W1 Close: {}, ETH Close: {}, ETH EMA: {}".format(
+            self.datas[0].close[0], self.ema_d1_close[0], self.ema_d1_high[0], self.ema_w1_close[0],
+            self.datas[1].close[0], self.eth_ema[0]))
