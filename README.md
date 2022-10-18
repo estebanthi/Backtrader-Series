@@ -10,3 +10,4 @@
 4. [Optimization](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-optimization-c5d8d0ed389e)
 5. [Custom Indicators](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-custom-indicators-adba75426ee2)
 6. [Multi Time Frame Analysis](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-multi-time-frame-sources-analysis-e9aad9dc11e)
+7. [Stop Loss and Take Profit](https://medium.com/@estebanthi/backtestbacktest-your-trading-systems-with-python-stop-loss-take-profit-d49d1a99a0e6)
