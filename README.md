@@ -1,8 +1,8 @@
 # Backtrader Series
 
 ---
-[Improve your Trading with Python](https://medium.com/@estebanthi/improve-your-trading-with-python-cd25a30cf722)
 
+[Improve your Trading with Python](https://medium.com/@estebanthi/improve-your-trading-with-python-cd25a30cf722)
 
 1. [Introduction](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-introduction-d32ea47bb8dd)
 2. [Strategies Development](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-strategies-development-48a510804d3b)
@@ -11,3 +11,4 @@
 5. [Custom Indicators](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-custom-indicators-adba75426ee2)
 6. [Multi Time Frame Analysis](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-multi-time-frame-sources-analysis-e9aad9dc11e)
 7. [Stop Loss and Take Profit](https://medium.com/@estebanthi/backtestbacktest-your-trading-systems-with-python-stop-loss-take-profit-d49d1a99a0e6)
+8. [Custom Analyzers](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-custom-analyzers-9499032972ee)
