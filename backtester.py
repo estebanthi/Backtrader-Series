@@ -6,7 +6,7 @@ import yfinance as yf
 class Backtester:
 
     @staticmethod
-    def backtest_strategy_non_optimized(strategy, analyzers=None, **parameters):
+    def backtest_strategy_non_optimized(strategy, analyzers=None, stdstats=True, observers=None, **parameters):
         btc_eur = yf.Ticker("BTC-EUR")
         data = btc_eur.history(period="1y")
         pandas_data = btfeeds.PandasData(dataname=data)
@@ -26,8 +26,13 @@ class Backtester:
         for analyzer in analyzers:
             cerebro.addanalyzer(analyzer, _name=analyzer.__name__.lower())
 
-        result = cerebro.run()
-        return result
+        if not observers:
+            observers = []
+        for observer in observers:
+            cerebro.addobserver(observer)
+
+        result = cerebro.run(stdstats=stdstats)
+        return result, cerebro
 
     @staticmethod
     def backtest_strategy_optimized(strategy, analyzers=None, **parameters):

@@ -2,7 +2,7 @@ import backtrader as bt
 from termcolor import colored
 
 from backtrader.indicators import ExponentialMovingAverage as EMA
-from indicators import Doji
+from indicators import Doji, DelayedPrice
 
 
 class MyStrategy(bt.Strategy):
@@ -11,7 +11,7 @@ class MyStrategy(bt.Strategy):
     )
 
     def __init__(self):
-       self.ema = EMA(period=self.p.ema_period)
+        self.ema = EMA(period=self.p.ema_period)
 
     def log(self, msg, dt=None):
         print("{} - {}".format(dt or self.datas[0].datetime.date(0), msg))
@@ -57,7 +57,6 @@ class MyStrategy(bt.Strategy):
 
 
 class CustomIndicatorStrat(bt.Strategy):
-
     params = (
         ('doji_threshold', 5),
     )
@@ -110,7 +109,6 @@ class CustomIndicatorStrat(bt.Strategy):
 
 
 class MultiTimeframeStrategy(bt.Strategy):
-
     params = (
         ('ema_period', 10),
     )
@@ -120,17 +118,18 @@ class MultiTimeframeStrategy(bt.Strategy):
         self.ema_d1_high = EMA(self.datas[0].high, period=self.p.ema_period)
         self.ema_w1_close = EMA(self.datas[1].close, period=self.p.ema_period)
         self.eth_ema = EMA(self.datas[1].close, period=self.p.ema_period)
+
     def log(self, msg, dt=None):
         print("{} - {}".format(dt or self.datas[0].datetime.date(0), msg))
 
     def next(self):
-        self.log("BTC Close: {}, EMA D1 Close: {}, EMA D1 High: {}, EMA W1 Close: {}, ETH Close: {}, ETH EMA: {}".format(
-            self.datas[0].close[0], self.ema_d1_close[0], self.ema_d1_high[0], self.ema_w1_close[0],
-            self.datas[1].close[0], self.eth_ema[0]))
+        self.log(
+            "BTC Close: {}, EMA D1 Close: {}, EMA D1 High: {}, EMA W1 Close: {}, ETH Close: {}, ETH EMA: {}".format(
+                self.datas[0].close[0], self.ema_d1_close[0], self.ema_d1_high[0], self.ema_w1_close[0],
+                self.datas[1].close[0], self.eth_ema[0]))
 
 
 class BracketStrategy(bt.Strategy):
-
     params = (
         ('ema_period', 10),
         ('stop_loss', 0),
@@ -189,7 +188,7 @@ class BracketStrategy(bt.Strategy):
 
             if self.p.risk_reward_ratio:
                 take_profit_price = self.datas[0].close[0] + (
-                            self.datas[0].close[0] - stop_price) * self.params.risk_reward_ratio
+                        self.datas[0].close[0] - stop_price) * self.params.risk_reward_ratio
 
             return stop_price, take_profit_price
 
@@ -204,7 +203,7 @@ class BracketStrategy(bt.Strategy):
 
             if self.p.risk_reward_ratio:
                 take_profit_price = self.datas[0].close[0] - (
-                            stop_price - self.datas[0].close[0]) * self.params.risk_reward_ratio
+                        stop_price - self.datas[0].close[0]) * self.params.risk_reward_ratio
 
             return stop_price, take_profit_price
 
@@ -249,3 +248,12 @@ class BracketStrategy(bt.Strategy):
                 self.log(colored('STOP CREATE, %.2f' % stop_price, 'red'))
             if take_profit_price != self.datas[0].close[0]:
                 self.log(colored('TAKE PROFIT CREATE, %.2f' % take_profit_price, 'green'))
+
+
+class PlotStrategy(bt.Strategy):
+    params = (
+        ('delay', 100),
+    )
+
+    def __init__(self):
+        self.delayed_price = DelayedPrice(delay=self.p.delay)
