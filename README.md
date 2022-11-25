@@ -12,3 +12,4 @@
 6. [Multi Time Frame Analysis](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-multi-time-frame-sources-analysis-e9aad9dc11e)
 7. [Stop Loss and Take Profit](https://medium.com/@estebanthi/backtestbacktest-your-trading-systems-with-python-stop-loss-take-profit-d49d1a99a0e6)
 8. [Custom Analyzers](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-custom-analyzers-9499032972ee)
+9. [Plotting](https://medium.com/@estebanthi/backtest-your-trading-systems-with-python-plotting-79cee6300504)
